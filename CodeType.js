@@ -99,7 +99,7 @@ const codeData =
 {
     public static void Iterate(List<string> ideas)
     {
-        Console.WriteLine("\nCurrent ideas:");
+        Console.WriteLine("Current ideas:");
         ideas.ForEach(i => Console.WriteLine($"- {i}"));
         
         while (ideas.Count > 1)
@@ -130,7 +130,7 @@ const codeData =
 
     public static void MaintainRoutine(int day)
     {
-        Console.WriteLine($"\nDay {day} routine:");
+        Console.WriteLine($"Day {day} routine:");
         DailyHabits.ForEach(habit => 
         {
             Console.WriteLine($"✔ {habit}");
@@ -204,7 +204,7 @@ const codeData =
 {
     public static void Mentor(List<string> team, int sessions = 1)
     {
-        Console.WriteLine($"\nMentoring session #{sessions}");
+        Console.WriteLine($"Mentoring session #{sessions}");
         
         for (int i = 0; i < team.Count; i++)
         {
