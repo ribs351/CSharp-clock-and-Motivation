@@ -1,0 +1,237 @@
+body {
+  display: flex;
+  font-family: "Consolas", "Fira Code", monospace;
+  font-weight: 400;
+  height: 100vh;
+  align-items: center;
+  overflow: hidden;
+  justify-content: space-between;
+  background-color: #1E1E1E; /* VS main background */
+  flex-direction: row;
+  gap: 50px;
+  color: #D4D4D4; 
+  line-height: 1.5;
+}
+
+#codeOutput {
+  background-color: #1E1E1E;
+  border: 1px solid #3E3E42; 
+  border-radius: 0;
+  min-width: 400px;
+  padding: 15px;
+  font-size: 14px;
+}
+
+#clockDisplay{
+  margin: auto;
+  padding: 10px;
+  background-color: #1E1E1E;
+  border-radius: 0; 
+  min-width: 300px;
+  font-size: 14px; 
+}
+
+.wrapper_codeoutput {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 10rem;
+  background-color: #1E1E1E;
+  transform: scale(1.2);
+}
+
+.codebox {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 15rem;
+  margin-right: 10rem;
+  border: 1px solid #3E3E42;
+  background-color: #1E1E1E; /* VS secondary background */
+  width: 350px;
+  font-size: 14px;
+  transform: scale(1.2);
+  border-radius: 0;
+  padding: 0px 30px 10px 0px;
+}
+
+
+.tag, .tag_2 {
+  font-family: "Segoe UI", sans-serif;
+  font-weight: 600;
+  -webkit-font-smoothing: antialiased;
+  margin-top: -40px;
+  background-color: #2D2D30; /* VS tab background */
+  padding: 8px 15px;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  color: #D4D4D4;
+  font-size: 13px;
+  position: absolute;
+  border: 1px solid #3E3E42;
+  border-bottom: none;
+}
+
+.tag {
+  top: 0;
+  left: 20px;
+}
+
+.tag_2 {
+  top: 15px;
+  left: 20px;
+}
+
+.red-dot {
+  background-color: #4ec9b0;
+  left: 38%;
+  position: absolute;
+  top: -29px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  transform: translateX(50%); /* to center it */
+}
+
+.red-dot_2 {
+  position: absolute;
+  background-color: rgb(25, 62, 133);
+  right: 150px; /* adjust as needed */
+
+  top: -28px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+pre {
+  tab-size: 4;
+  margin: 0;
+  white-space: pre-wrap;
+}
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; 
+}
+
+.keyword {
+  color: #569cd6; /* blue */
+  font-family: "Fira Code", monospace;
+  font-weight: 500;
+}
+
+.object {
+  color: #d4d4d4; /* white */
+  font-family: "Fira Code", monospace;
+  font-weight: 500;
+}
+
+.property {
+  color: #4ec9b0; /* cyan */
+  font-family: "Fira Code", monospace;
+  font-weight: 500;
+}
+
+.number {
+  color: #d7ba7d; /* yellow */
+  font-family: "Fira Code", monospace;
+  font-weight: 500;
+}
+
+.string {
+  color: #9cdcfe; /* green */
+  font-family: "Fira Code", monospace;
+  font-weight: 500;
+}
+
+.punctuation {
+  color: #707070; /* gray */
+  font-family: "Fira Code", monospace;
+  font-weight: 500;
+}
+
+/* Base style for the code container */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #f8f8f2; /* Light color for text */
+  background: #282a36; /* Dark background */
+  text-shadow: 0 1px rgba(0, 0, 0, 0);
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+}
+
+/* Token colors */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #6272a4; /* Lighter color for comments */
+}
+
+.token.punctuation {
+  color: #f8f8f2; /* Same as base color */
+}
+
+.token.namespace {
+  opacity: 0.7; /* Some transparency for namespace */
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #ff79c6; /* Pinkish color */
+}
+
+.token.boolean,
+.token.number {
+  color: #bd93f9; /* Purple color */
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #99c36d; /* Greenish color */
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #f8f8f2; /* Base color */
+  background-color: RGBA(0, 0, 0, 0);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #569cd6; /* Orangish color */
+}
+
+.token.function,
+.token.class-name {
+  color: #f1fa8c; /* Yellow color */
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: #ff5555; /* Redish color */
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold; /* Make it bold */
+}
+
+.token.italic {
+  font-style: italic; /* Italicize */
+}
