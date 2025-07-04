@@ -3,139 +3,242 @@ const codeData =
     CodeToType: 
     [
         {
-            code1: `public void TryUntilSuccess(int attempts)
+            code1: `public class Perseverance
 {
-    if (attempts == 0)
+    public static void Main()
     {
-        Console.WriteLine("Every attempt brings you closer to success.");
-        return;
+        int attempts = 0;
+        while (true)
+        {
+            attempts++;
+            Console.WriteLine($"Attempt #{attempts}");
+            
+            if (BreakthroughAchieved())
+            {
+                Console.WriteLine("Success! Every failure was a lesson.");
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Temporary setback. Keep going!");
+                Thread.Sleep(1000); // Pause to reflect
+            }
+        }
     }
-    if (new Random().NextDouble() > 0.7)
-    {
-        Console.WriteLine("Success is on the horizon!");
-    }
-    else
-    {
-        Console.WriteLine("Keep pushing. You're almost there.");
-        TryUntilSuccess(attempts - 1);
-    }
-}
-TryUntilSuccess(10);`,
 
-            code2: `public void Climb(int mountainHeight)
-{
-    if (mountainHeight <= 0)
+    private static bool BreakthroughAchieved()
     {
-        Console.WriteLine("The peak is just another step in the journey.");
-        return;
+        return new Random().Next(0, 10) == 9; // 10% chance
     }
-    Console.WriteLine("Every step counts: " + mountainHeight + " left.");
-    Climb(mountainHeight - 1);
-}
-Climb(100);`,
+}`,
 
-            code3: `public void Plant(string seed)
+            code2: `public class Progress
 {
-    if (string.IsNullOrEmpty(seed))
+    public static void Grow(int currentLevel)
     {
-        Console.WriteLine("From small beginnings come great things.");
-        return;
+        int targetLevel = 100;
+        
+        for (int i = currentLevel; i <= targetLevel; i++)
+        {
+            Console.WriteLine($"Level {i}: Still growing...");
+            
+            if (i % 10 == 0)
+            {
+                Console.WriteLine("Milestone reached! Celebrate small wins.");
+            }
+            
+            Thread.Sleep(500); // Growth takes time
+        }
+        
+        Console.WriteLine("Mastery achieved through consistent effort!");
     }
-    Console.WriteLine("Cultivating: " + seed);
-    Plant(seed.Substring(1));
-}
-Plant("Determination");`,
+}`,
 
-            code4: `public void DreamBig(List<string> dreams, List<string> reality)
+            code3: `public class Wisdom
 {
-    if (dreams.Count == 0)
+    public static void Accumulate(List<string> lessons, int depth = 0)
     {
-        Console.WriteLine("Dreams become reality, one step at a time.");
-        return;
+        string indent = new string(' ', depth * 2);
+        
+        if (!lessons.Any())
+        {
+            Console.WriteLine(indent + "All lessons learned.");
+            return;
+        }
+        
+        string currentLesson = lessons.First();
+        Console.WriteLine(indent + $"Learning: {currentLesson}");
+        Thread.Sleep(1000);
+        
+        Accumulate(lessons.Skip(1).ToList(), depth + 1);
+        Console.WriteLine(indent + $"Mastered: {currentLesson}");
     }
-    string dream = dreams[0];
-    dreams.RemoveAt(0);
-    reality.Add(dream);
-    Console.WriteLine("Living the dream: " + dream);
-    DreamBig(dreams, reality);
-}
-DreamBig(new List<string> { "Hope", "Faith", "Courage" }, new List<string>());`,
+}`,
 
-            code5: `public void Journey(int paths, int destination)
+            code4: `public class Resilience
 {
-    if (paths == destination)
+    public static void Recover(int setbacks)
     {
-        Console.WriteLine("It's about the journey, not the destination.");
-        return;
+        try
+        {
+            Console.WriteLine("Trying new approach...");
+            if (new Random().NextDouble() > 0.3)
+                throw new Exception("Unexpected challenge");
+                
+            Console.WriteLine("Adaptation successful!");
+        }
+        catch
+        {
+            Console.WriteLine($"Overcoming setback #{setbacks}");
+            Recover(setbacks + 1);
+        }
     }
-    Console.WriteLine("Every path is a story: " + paths);
-    Journey(paths + 1, destination);
-}
-Journey(1, 10);`,
+}`,
 
-            code6: `public void CreateArt(List<string> inspiration, string canvas)
+            code5: `public class Innovation
 {
-    if (inspiration.Count == 0)
+    public static void Iterate(List<string> ideas)
     {
-        Console.WriteLine("Art is an expression of the soul.");
-        return;
+        Console.WriteLine("\nCurrent ideas:");
+        ideas.ForEach(i => Console.WriteLine($"- {i}"));
+        
+        while (ideas.Count > 1)
+        {
+            string newIdea = CombineIdeas(ideas[0], ideas[1]);
+            Console.WriteLine($"Combined: {newIdea}");
+            ideas.RemoveRange(0, 2);
+            ideas.Add(newIdea);
+            Thread.Sleep(1500);
+        }
+        
+        Console.WriteLine($"Final breakthrough: {ideas.First()}");
     }
-    string color = inspiration[inspiration.Count - 1];
-    inspiration.RemoveAt(inspiration.Count - 1);
-    Console.WriteLine("Painting with: " + color);
-    CreateArt(inspiration, canvas + color);
-}
-CreateArt(new List<string> { "Passion", "Emotion", "Vision" }, "");`,
 
-            code7: `public void FaceChallenges(int challengesLeft, int overcome)
-{
-    if (challengesLeft == 0)
-    {
-        Console.WriteLine("With every challenge, you become stronger.");
-        return;
-    }
-    Console.WriteLine("Facing challenge: " + challengesLeft);
-    FaceChallenges(challengesLeft - 1, overcome + 1);
-}
-FaceChallenges(5, 0);`,
+    private static string CombineIdeas(string a, string b) => $"{a} + {b}";
+}`,
 
-            code8: `public void GrowKnowledge(List<string> books, string wisdom)
+            code6: `public class Discipline
 {
-    if (books.Count == 0)
-    {
-        Console.WriteLine("Knowledge is the key to unlocking potential.");
-        return;
-    }
-    string book = books[0];
-    books.RemoveAt(0);
-    Console.WriteLine("Reading: " + book);
-    GrowKnowledge(books, wisdom + book);
-}
-GrowKnowledge(new List<string> { "Experience", "Understanding", "Insight" }, "");`,
+    private static readonly List<string> DailyHabits = new() 
+    { 
+        "Morning planning", 
+        "Deep work session", 
+        "Skill practice",
+        "Health routine",
+        "Evening reflection"
+    };
 
-            code9: `public void EmbraceChange(string old, string newBeginnings)
-{
-    if (string.IsNullOrEmpty(old))
+    public static void MaintainRoutine(int day)
     {
-        Console.WriteLine("Change is the only constant.");
-        return;
+        Console.WriteLine($"\nDay {day} routine:");
+        DailyHabits.ForEach(habit => 
+        {
+            Console.WriteLine($"✔ {habit}");
+            Thread.Sleep(800);
+        });
+        
+        if (day < 21) // Forming a habit
+            MaintainRoutine(day + 1);
+        else
+            Console.WriteLine("Habits are now second nature!");
     }
-    Console.WriteLine("Out with the old: " + old);
-    EmbraceChange(old.Substring(1), newBeginnings + old[0]);
-}
-EmbraceChange("Past", "");`,
+}`,
 
-            code10: `public void FindBalance(int yin, int yang)
+            code7: `public class Creativity
 {
-    if (yin == yang)
+    public static void Brainstorm(int ideasNeeded, List<string> currentIdeas = null)
     {
-        Console.WriteLine("Balance is the essence of life.");
-        return;
+        currentIdeas ??= new List<string>();
+        
+        if (currentIdeas.Count >= ideasNeeded)
+        {
+            Console.WriteLine("Top ideas:");
+            currentIdeas.OrderByDescending(i => i.Length)
+                       .Take(3)
+                       .ToList()
+                       .ForEach(i => Console.WriteLine($"🌟 {i}"));
+            return;
+        }
+        
+        string newIdea = GenerateIdea();
+        Console.WriteLine($"Idea #{currentIdeas.Count + 1}: {newIdea}");
+        currentIdeas.Add(newIdea);
+        
+        Thread.Sleep(1200);
+        Brainstorm(ideasNeeded, currentIdeas);
     }
-    Console.WriteLine("Balancing: " + yin + " and " + yang);
-    FindBalance(yin + 1, yang - 1);
-}
-FindBalance(5, 15);`
+
+    private static string GenerateIdea()
+    {
+        string[] parts = { "AI", "quantum", "sustainable", "VR", "neural", "bio-inspired" };
+        string[] domains = { "finance", "education", "healthcare", "energy", "transportation" };
+        return $"{parts[new Random().Next(parts.Length)]} {domains[new Random().Next(domains.Length)]} solution";
+    }
+}`,
+
+            code8: `public class Collaboration
+{
+    public static void PairProgram(string problem, int hours = 0)
+    {
+        string[] steps = {
+            "Analyzing requirements",
+            "Writing tests",
+            "Implementing solution",
+            "Refactoring code",
+            "Documenting results"
+        };
+        
+        if (hours >= steps.Length)
+        {
+            Console.WriteLine($"\nProblem solved in {hours} hours of teamwork!");
+            return;
+        }
+        
+        Console.WriteLine($"{steps[hours]}...");
+        Thread.Sleep(1500);
+        PairProgram(problem, hours + 1);
+    }
+}`,
+
+            code9: `public class Leadership
+{
+    public static void Mentor(List<string> team, int sessions = 1)
+    {
+        Console.WriteLine($"\nMentoring session #{sessions}");
+        
+        for (int i = 0; i < team.Count; i++)
+        {
+            Console.WriteLine($"Helping {team[i]} grow...");
+            team[i] = $"{team[i]} v{sessions + 1}";
+            Thread.Sleep(1000);
+        }
+        
+        if (sessions < 3)
+            Mentor(team, sessions + 1);
+        else
+            Console.WriteLine("Team has reached new potential!");
+    }
+}`,
+
+            code10: `public class Legacy
+{
+    public static void Build(int generation, Action<int> continuation = null)
+    {
+        continuation ??= (gen) => Console.WriteLine($"Generation {gen} secured the future");
+        
+        Console.WriteLine($"Generation {generation} building...");
+        Thread.Sleep(2000);
+        
+        if (generation > 0)
+        {
+            Build(generation - 1, continuation);
+        }
+        else
+        {
+            continuation(generation);
+        }
+    }
+}`
         }
     ]
 };
